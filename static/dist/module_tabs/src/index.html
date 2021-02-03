@@ -1,0 +1,109 @@
+<div class="container"> 
+<section id="fancyTabWidget" class="tabs t-tabs">
+        <ul class="nav nav-tabs fancyTabs" role="tablist">
+        
+                    <li class="tab fancyTab active">
+                    <div class="arrow-down"><div class="arrow-down-inner"></div></div>  
+                        <a id="tab0" href="#tabBody0" role="tab" aria-controls="tabBody0" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-anchor"></span><span class="hidden-xs">Anchorages</span></a>
+                        <div class="whiteBlock"></div>
+                    </li>
+                    
+                    <li class="tab fancyTab">
+                    <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                        <a id="tab1" href="#tabBody1" role="tab" aria-controls="tabBody1" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-ship"></span><span class="hidden-xs">Vessel Tracker</span></a>
+                        <div class="whiteBlock"></div>
+                    </li>
+                    
+                    <li class="tab fancyTab">
+                    <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                        <a id="tab2" href="#tabBody2" role="tab" aria-controls="tabBody2" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-angle-double-up"></span><span class="hidden-xs">Overfishing Checker</span></a>
+                        <div class="whiteBlock"></div>
+                    </li>
+                    
+                    <li class="tab fancyTab">
+                    <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                        <a id="tab3" href="#tabBody3" role="tab" aria-controls="tabBody3" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-exclamation-triangle"></span><span class="hidden-xs">Anomaly Detector</span></a>
+                        <div class="whiteBlock"></div>
+                    </li> 
+                         
+                    <li class="tab fancyTab">
+                    <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                        <a id="tab4" href="#tabBody4" role="tab" aria-controls="tabBody4" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-bar-chart"></span><span class="hidden-xs">Vessel Data Analysis</span></a>
+                        <div class="whiteBlock"></div>
+                    </li>
+                    
+                    <li class="tab fancyTab">
+                    <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                        <a id="tab5" href="#tabBody5" role="tab" aria-controls="tabBody5" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-bolt"></span><span class="hidden-xs">Weather Monitoring</span></a>
+                        <div class="whiteBlock"></div>
+                    </li>
+        </ul>
+        <div id="myTabContent" class="tab-content fancyTabContent" aria-live="polite">
+                    <div class="tab-pane  fade active in" id="tabBody0" role="tabpanel" aria-labelledby="tab0" aria-hidden="false" tabindex="0">
+                        <div>
+                            <div class="row">
+                                
+                                <div class="col-md-12">
+                                    <h2>See where vessels congregate</h2>
+                                    <p>A global database of anchorage locations of various vessels provided by Global Fishing Watch has been utilized. Checkout the geospatial visualization of these anchorages, majorly ports in the ASEAN India region. </p>
+                                </div>
+                                
+                            </div>
+                            <button class="btn">Explore on Map</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane  fade" id="tabBody1" role="tabpanel" aria-labelledby="tab1" aria-hidden="true" tabindex="0">
+                        <div class="row">
+                                
+                                <div class="col-md-12">
+                                    <h2>Find everything about a vessel</h2>
+                                    <p>Our Vessel Tracker can be used to determine the country of origin, geartype and the possibility of fishing in the current geo-coordinates for a fishing vessel. This intelligent module uses a Decision Tree Classifier for accurately predicting the geartype, and further using the AIS message features passed to a Dense Neural Network to predict if a vessel is fishing in a given area and at a given time.</p>
+                                   
+                                </div>
+                            </div>
+                            <button class="btn">Explore on Map</button>
+                    </div>
+                    <div class="tab-pane  fade" id="tabBody2" role="tabpanel" aria-labelledby="tab2" aria-hidden="true" tabindex="0">
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <h2>Responsible fishing</h2>
+                                    <p>Nowadays, a critical issue facing the fishery communities is overfishing. Our Overfishing Checker uses the Random Forest Algorithm to show you fishing areas while avoiding the exploitation of resources and crowding of vessels in a given area.</p>
+                                  
+                                </div>
+                            </div>
+                            <button class="btn">Explore on Map</button>
+                    </div>
+                    <div class="tab-pane  fade" id="tabBody3" role="tabpanel" aria-labelledby="tab3" aria-hidden="true" tabindex="0">
+                    <div class="row">
+                        <div class="col-md-12">
+                                    <h2>What's weird</h2>
+                                    <p>A number of instances can be drawn from AIS messages where shipping vessels do not follow the path they are supposed to or shut down their AIS devices. Our Anomaly Detector studies the normal behavior of all the vessels and alerts about such anomalous behavior with the help of a Recurrent Neural Network.</p>
+                                  
+                                </div>
+                            </div>
+                            <button class="btn">Explore on Map</button>
+                    </div>
+                    <div class="tab-pane  fade" id="tabBody4" role="tabpanel" aria-labelledby="tab4" aria-hidden="true" tabindex="0">
+                    <div class="row">
+                        <div class="col-md-12">
+                                    <h2>AIS data interpretation made easier</h2>
+                                    <p>Understanding massive chunks of AIS messages is not a cakewalk. Checkout our significant vessel data analysis results at your fingertips.</p>
+                                  
+                                </div>
+                            </div>
+                            <button class="btn">Explore on Map</button>
+                    </div>
+                    <div class="tab-pane  fade" id="tabBody5" role="tabpanel" aria-labelledby="tab5" aria-hidden="true" tabindex="0">
+                    <div class="row">
+                        <div class="col-md-12">
+                                    <h2>How's the weather</h2>
+                                    <p>Explore the predictions of temperature, clouds, precipitation, wind speed and sea level pressure using the OpenWeather API.</p>
+                                  
+                                </div>
+                            </div>
+                            <button class="btn">Explore on Map</button>
+                    </div>
+        </div>
+
+    </section>
+</div>

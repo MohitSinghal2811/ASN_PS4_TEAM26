@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="data_file" id="data_file">
+	<SimpleField name="col0" type="int"></SimpleField>
+	<SimpleField name="mmsi" type="float"></SimpleField>
+	<SimpleField name="time" type="float"></SimpleField>
+	<SimpleField name="distance_f" type="string"></SimpleField>
+	<SimpleField name="distance00" type="string"></SimpleField>
+	<SimpleField name="speed" type="float"></SimpleField>
+	<SimpleField name="course" type="float"></SimpleField>
+	<SimpleField name="lat" type="float"></SimpleField>
+	<SimpleField name="lon" type="float"></SimpleField>
+	<SimpleField name="is_fishing" type="float"></SimpleField>
+	<SimpleField name="source" type="string"></SimpleField>
+	<SimpleField name="pk" type="string"></SimpleField>
+</Schema>
+<Folder><name>data_file</name>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#data_file">
+		<SimpleData name="col0">0</SimpleData>
+		<SimpleData name="mmsi">18483455048454</SimpleData>
+		<SimpleData name="time">1340882344</SimpleData>
+		<SimpleData name="speed">0</SimpleData>
+		<SimpleData name="course">0</SimpleData>
+		<SimpleData name="lat">28.9673538208</SimpleData>
+		<SimpleData name="lon">-13.5377969742</SimpleData>
+		<SimpleData name="is_fishing">-1</SimpleData>
+		<SimpleData name="source">gfw</SimpleData>
+		<SimpleData name="pk">110375</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Point><coordinates>-13.5377969742,28.9673538208</coordinates></Point></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#data_file">
+		<SimpleData name="col0">1</SimpleData>
+		<SimpleData name="mmsi">18483455048454</SimpleData>
+		<SimpleData name="time">1340884324</SimpleData>
+		<SimpleData name="speed">0</SimpleData>
+		<SimpleData name="course">125.1999969482</SimpleData>
+		<SimpleData name="lat">28.9673728943</SimpleData>
+		<SimpleData name="lon">-13.5378379822</SimpleData>
+		<SimpleData name="is_fishing">-1</SimpleData>
+		<SimpleData name="source">gfw</SimpleData>
+		<SimpleData name="pk">110376</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Point><coordinates>-13.5378379822,28.9673728943</coordinates></Point></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#data_file">
+		<SimpleData name="col0">2</SimpleData>
+		<SimpleData name="mmsi">18483455048454</SimpleData>
+		<SimpleData name="time">1340884653</SimpleData>
+		<SimpleData name="speed">0</SimpleData>
+		<SimpleData name="course">0</SimpleData>
+		<SimpleData name="lat">28.9673538208</SimpleData>
+		<SimpleData name="lon">-13.5378379822</SimpleData>
+		<SimpleData name="is_fishing">-1</SimpleData>
+		<SimpleData name="source">gfw</SimpleData>
+		<SimpleData name="pk">110377</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Point><coordinates>-13.5378379822,28.9673538208</coordinates></Point></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#data_file">
+		<SimpleData name="col0">3</SimpleData>
+		<SimpleData name="mmsi">18483455048454</SimpleData>
+		<SimpleData name="time">1340887925</SimpleData>
+		<SimpleData name="speed">0</SimpleData>
+		<SimpleData name="course">0</SimpleData>
+		<SimpleData name="lat">28.9673538208</SimpleData>
+		<SimpleData name="lon">-13.5378379822</SimpleData>
+		<SimpleData name="is_fishing">-1</SimpleData>
+		<SimpleData name="source">gfw</SimpleData>
+		<SimpleData name="pk">110378</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Point><coordinates>-13.5378379822,28.9673538208</coordinates></Point></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#data_file">
+		<SimpleData name="col0">4</SimpleData>
+		<SimpleData name="mmsi">18483455048454</SimpleData>
+		<SimpleData name="time">1340925414</SimpleData>
+		<SimpleData name="speed">8.6999998093</SimpleData>
+		<SimpleData name="course">203.1000061035</SimpleData>
+		<SimpleData name="lat">28.9296531677</SimpleData>
+		<SimpleData name="lon">-13.5439548492</SimpleData>
+		<SimpleData name="is_fishing">-1</SimpleData>
+		<SimpleData name="source">gfw</SimpleData>
+		<SimpleData name="pk">110379</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Point><coordinates>-13.5439548492,28.9296531677</coordinates></Point></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#data_file">
+		<SimpleData name="col0">5</SimpleData>
+		<SimpleData name="mmsi">18483455048454</SimpleData>
+		<SimpleData name="time">1340936914</SimpleData>
+		<SimpleData name="speed">8.6000003815</SimpleData>
+		<SimpleData name="course">192.1999969482</SimpleData>
+		<SimpleData name="lat">28.4981842041</SimpleData>
+		<SimpleData name="lon">-13.7021865845</SimpleData>
+		<SimpleData name="is_fishing">-1</SimpleData>
+		<SimpleData name="source">gfw</SimpleData>
+		<SimpleData name="pk">110380</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Point><coordinates>-13.7021865845,28.4981842041</coordinates></Point></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#data_file">
+		<SimpleData name="col0">6</SimpleData>
+		<SimpleData name="mmsi">18483455048454</SimpleData>
+		<SimpleData name="time">1340943244</SimpleData>
+		<SimpleData name="speed">8.5</SimpleData>
+		<SimpleData name="course">194.1999969482</SimpleData>
+		<SimpleData name="lat">28.2553329468</SimpleData>
+		<SimpleData name="lon">-13.7863330841</SimpleData>
+		<SimpleData name="is_fishing">-1</SimpleData>
+		<SimpleData name="source">gfw</SimpleData>
+		<SimpleData name="pk">110381</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Point><coordinates>-13.7863330841,28.2553329468</coordinates></Point></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#data_file">
+		<SimpleData name="col0">7</SimpleData>
+		<SimpleData name="mmsi">18483455048454</SimpleData>
+		<SimpleData name="time">1340949693</SimpleData>
+		<SimpleData name="speed">8.3999996185</SimpleData>
+		<SimpleData name="course">205.1999969482</SimpleData>
+		<SimpleData name="lat">28.0062599182</SimpleData>
+		<SimpleData name="lon">-13.8630781174</SimpleData>
+		<SimpleData name="is_fishing">-1</SimpleData>
+		<SimpleData name="source">gfw</SimpleData>
+		<SimpleData name="pk">110382</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Point><coordinates>-13.8630781174,28.0062599182</coordinates></Point></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#data_file">
+		<SimpleData name="col0">8</SimpleData>
+		<SimpleData name="mmsi">18483455048454</SimpleData>
+		<SimpleData name="time">1340956255</SimpleData>
+		<SimpleData name="speed">7.5</SimpleData>
+		<SimpleData name="course">237.1999969482</SimpleData>
+		<SimpleData name="lat">27.8161449432</SimpleData>
+		<SimpleData name="lon">-14.0641899109</SimpleData>
+		<SimpleData name="is_fishing">-1</SimpleData>
+		<SimpleData name="source">gfw</SimpleData>
+		<SimpleData name="pk">110383</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Point><coordinates>-14.0641899109,27.8161449432</coordinates></Point></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#data_file">
+		<SimpleData name="col0">9</SimpleData>
+		<SimpleData name="mmsi">18483455048454</SimpleData>
+		<SimpleData name="time">1340962953</SimpleData>
+		<SimpleData name="speed">8.6000003815</SimpleData>
+		<SimpleData name="course">241.1999969482</SimpleData>
+		<SimpleData name="lat">27.6678276062</SimpleData>
+		<SimpleData name="lon">-14.321559906</SimpleData>
+		<SimpleData name="is_fishing">-1</SimpleData>
+		<SimpleData name="source">gfw</SimpleData>
+		<SimpleData name="pk">110384</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Point><coordinates>-14.321559906,27.6678276062</coordinates></Point></MultiGeometry>
+  </Placemark>
+</Folder>
+</Document></kml>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+{% load leaflet_tags %}
+{% load static %}
+<html lang="en">
+<head>
+{% leaflet_js %}
+{% leaflet_css %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+    <meta charset="UTF-8">
+    <style type='text/css'>
+      #gis {width:100%; height:100vh; position: relative}
+    </style>
+    <style type="text/css">
+    .info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+</style>
+    <title> OceanTrace- Fishing Spots Detector </title>
+</head>
+
+<body>
+<div id="gis"></div>
+
+</body>
+  <script type = "text/javascript" src="{% static 'dist/leaflet.ajax.js' %}"></script>
+  <script type = "text/javascript" src="{% static 'dist/leaflet-providers.js' %}"></script>
+  <script type = "text/javascript" src="{% static 'colors.txt' %}"></script>
+  <script type = "text/javascript">
+
+
+
+var info = L.control();
+
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+    this._div.innerHTML = '<h4>MMSI code</h4>' +  (props ?
+        '<b>' + props.mmsi + '</b><br />' + props.geartype + '</b><br />' + props.flag + '</b><br />' + "( " + props.lat + ", " + props.lon + " )"
+        : 'Hover over a vessel');
+};
+
+
+
+function createCircleMarker( feature, latlng ){
+    console.log(feature);
+  let options = {
+    radius: 7,
+    color: getcolor(feature.properties.flag),
+    stroke:true,
+    weight: 10,
+    opacity: 10
+  }
+  return L.circleMarker( latlng, options );
+}
+
+function getcolor(iso3){
+    if( iso3 == "IND")
+        return "#e6194B";
+    if( iso3 == "IDN")
+        return "#3cb44b";
+    if( iso3 == "THA")
+        return "#ffe119";
+    if( iso3 == "MYS")
+        return "#f58231";
+    if( iso3 == "VNM")
+        return "#911eb4";
+    if( iso3 == "BRN")
+        return "#f032e6";
+    if( iso3 == "PHL")
+        return "#800000";
+    if( iso3 == "MMR")
+        return "#000075";
+    if( iso3 == "KHM")
+        return "#9A6324";
+    if( iso3 == "SGP")
+        return "#4363d8";
+}
+
+function highlightFeature(e) {
+    var layer = e.target;
+    console.log(layer.feature.properties);
+    info.update(layer.feature.properties);
+}
+
+
+
+function resetHighlight(e) {
+    info.update();
+}
+
+function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+    });
+}
+
+  </script>
+
+<script type = "text/javascript">
+
+var mymap = L.map('gis').setView([9.960071, 76.237232], 10);
+   L.marker([9.960071, 76.237232]).addTo(mymap);
+        L.circle([9.960071, 76.237232], 10000).addTo(mymap);
+
+    L.tileLayer.provider('Stadia.AlidadeSmoothDark').addTo(mymap);
+
+      var overlayMaps = {};
+      var driftinglonglines = new L.GeoJSON.AJAX("{% url 'load_driftinglonglines' %}",{
+                    pointToLayer: createCircleMarker, 
+                    onEachFeature: onEachFeature,
+                    });
+      overlayMaps["driftinglonglines"] = driftinglonglines
+
+      var fixedgear = new L.GeoJSON.AJAX("{% url 'load_fixedgear' %}",{
+                    pointToLayer: createCircleMarker, 
+                    onEachFeature: onEachFeature,
+                    });
+      overlayMaps["fixedgear"] = fixedgear
+
+      var squidjiggers = new L.GeoJSON.AJAX("{% url 'load_squidjigger' %}",{
+                    pointToLayer: createCircleMarker, 
+                    onEachFeature: onEachFeature,
+                    });
+      overlayMaps["squidjiggers"] = squidjiggers
+
+      var purseseines = new L.GeoJSON.AJAX("{% url 'load_purseseines' %}",{
+                    pointToLayer: createCircleMarker, 
+                    onEachFeature: onEachFeature,
+                    });
+      overlayMaps["purseseines"] = purseseines
+
+      var trawlers = new L.GeoJSON.AJAX("{% url 'load_trawlers' %}",{
+                    pointToLayer: createCircleMarker,
+                    onEachFeature: onEachFeature,
+                    });
+      overlayMaps["trawlers"] = trawlers
+
+      var others = new L.GeoJSON.AJAX("{% url 'load_others' %}",{
+                    pointToLayer: createCircleMarker, 
+                    onEachFeature: onEachFeature,
+                    });
+      overlayMaps["others"] = others
+
+
+
+  // var baselayer1 =  L.tileLayer.provider('Stamen.Watercolor');
+  var baselayer2 =  L.tileLayer.provider('Stadia.AlidadeSmoothDark');
+  var baselayer3 = L.tileLayer.provider('Esri.WorldImagery');
+    var baseMaps = { 
+     // "layer1" : baselayer1, 
+      "Dark" : baselayer2,
+      "Satellite" : baselayer3,
+    };
+
+
+info.addTo(mymap);
+      L.control.layers(baseMaps, overlayMaps).addTo(mymap);
+</script>
+
+</html>

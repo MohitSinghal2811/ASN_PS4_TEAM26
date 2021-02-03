@@ -1,0 +1,138 @@
+html {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+body {
+  align-items: center;
+  background-color: #e9e9e9;
+  background: url(https://www.teekay.com/wp-content/uploads/2016/11/IMG_0622-1250x938.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  height: 100vh;
+  place-items: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  min-height: 100vh;
+  background-color: #0367a6;
+  position: relative;
+  justify-content: center;
+}
+.page:after {
+  content: "";
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  background-color: #e9e9e9;
+  z-index: 1;
+}
+
+.pricing-container {
+  z-index: 2;
+  position: absolute;
+  left: 30%;
+  top: 50px;
+  transform: translate(-50%, 0);
+}
+@media screen and (min-width: 500px) {
+  .pricing-container {
+    background-color: #e9e9e9;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 0px 30px 5px rgba(0, 0, 0, 0.3);
+    width: 800px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .pricing-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.pricing-container .plan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  margin: 30px 0px;
+  padding: 0px 20px;
+}
+.pricing-container .plan:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+.pricing-container .plan .plan-icon {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  font-size: 7rem;
+  color: #0367a6;
+}
+.pricing-container .plan .plan-icon:after {
+  content: "";
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba(93, 169, 254, 0.1);
+  z-index: 8;
+  position: absolute;
+}
+.pricing-container .plan .title {
+  color: #0367a6;
+  line-height: 4rem;
+  letter-spacing: 2px;
+  text-align: center;
+  justify-content: center;
+}
+.pricing-container .plan .features {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+.pricing-container .plan .features li {
+  line-height: 1.5rem;
+  width: 100%;
+  padding: 3px;
+  display: block;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 95%;
+  color: #0367a6;
+}
+.pricing-container .plan .features li:last-child {
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+}
+.pricing-container .plan .price {
+  margin-top: 1rem;
+  font-size: 2.5rem;
+  line-height: 5rem;
+  color: #0367a6;
+}
+@media screen and (max-width: 500px) {
+  .pricing-container .plan {
+    display: flex;
+    flex-direction: column;
+    background-color: #e9e9e9;
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px 5px rgba(0, 0, 0, 0.3);
+    justify-content: center;
+    padding-bottom: 2rem;
+  }
+}

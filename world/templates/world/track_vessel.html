@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+{% load leaflet_tags %}
+{% load static %}
+<html lang="en">
+<head>
+{% leaflet_js %}
+{% leaflet_css %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    
+    <meta charset="UTF-8">
+    <style type='text/css'>
+        #gis {width:100%; height:100vh; position: relative; z-index = 1}
+    </style>
+    <title> OceanTrace - Track Vessels </title>
+</head>
+
+<body>
+<style>
+  #mmsi-form {
+    position: absolute;
+    top: 10px;
+    right: 100px;
+    z-index: 1000;
+    padding: 1em;
+    background: white;
+  }
+  #mmsi-form input {
+    display: inline-block;
+    border: 1px solid #999;
+    font-size: 14px;
+    border-radius: 4px;
+    height: 28px;
+    line-height: 28px;
+  }
+  #mmsi-form input[type='submit'] {
+    box-sizing: content-box;
+    padding: 0 1em;
+    text-transform: uppercase;
+    color: white;
+    background: #5C7DB8;
+    border-color: #5C7DB8;
+  }
+</style>
+
+<div id="mmsi-form" class="leaflet-bar">
+  <form action="JavaScript:load_data()" id="form" >
+    <label for="MMSI">
+      MMSI CODE:
+      <input  id='mmsi' type="int" value='000000000' name='mmsi'>
+    </label>
+    <label for="Start">
+      Start:
+      <input  id='start' type="datetime-local" name='start-datetime'>
+    </label>
+    <label for="End">
+      End:
+      <input  id='end' type="datetime-local" name='end-datetime'>
+    </label>
+    <input type="submit" value="Track" >
+  </form>
+</div>
+
+
+<div id="gis"></div>
+
+
+</body>
+
+    <script type = "text/javascript" src="{% static 'dist/leaflet.ajax.js' %}"></script>
+    <script type = "text/javascript" src="{% static 'dist/leaflet-providers.js' %}"></script>
+    <script type = "text/javascript">
+        function createCircleMarker( feature, latlng ){
+            let options = {
+                radius: getRadius(feature.properties.drift_radi),
+                color: getcolor(feature.properties.iso3),
+                stroke:false,
+                weight: 1,
+                opacity: 1
+            }
+            return L.circleMarker( latlng, options );
+        }
+
+        function getRadius(drif_radi){
+            return 4;
+        }
+
+        function getcolor(iso3){
+            if( iso3 == "IND")
+                return "#e6194B";
+            if( iso3 == "IDN")
+                return "#3cb44b";
+            if( iso3 == "THA")
+                return "#ffe119";
+            if( iso3 == "MYS")
+                return "#f58231";
+            if( iso3 == "VNM")
+                return "#911eb4";
+            if( iso3 == "BRN")
+                return "#f032e6";
+            if( iso3 == "PHL")
+                return "#800000";
+            if( iso3 == "MMR")
+                return "#000075";
+            if( iso3 == "KHM")
+                return "#9A6324";
+            if( iso3 == "SGP")
+                return "#4363d8";
+        }
+
+    </script>
+
+    <script type = "text/javascript">
+        
+        var mymap = L.map('gis');
+
+        mymap.setView(new L.LatLng(5, 100), 5);
+         
+        function load_data(){
+            var xhttp = new XMLHttpRequest();
+            var mmsiform = document.getElementById('form');
+            var mmsi  = document.getElementById('mmsi').value;
+            var start = document.getElementById('start').value;
+            var end = document.getElementById('end').value;
+            console.log(start);
+            console.log(end);
+            //console.log(new DateTime(start).valueOf());
+            //console.log(new DateTime(end).valueOf());
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                data = this.responseText;
+                var obj = JSON.parse(data)
+                obj = obj.features;
+                //console.log(obj);
+                temp = []
+                mymap.setView(new L.LatLng(obj[0].properties.lat,obj[0].properties.lon ), 12);
+                obj.forEach(function (ob){
+                    temp.push([ob.properties.lat, ob.properties.lon]);
+                });
+                var line = L.polyline(temp).addTo(mymap);
+                }
+            };
+            console.log("HI");
+            xhttp.open("GET", "load_tracks/" + mmsi.toString() + "/" +  start.toString() + "/" + end.toString(), true);
+            xhttp.send();
+        }
+
+
+        L.tileLayer.provider('Stadia.AlidadeSmoothDark').addTo(mymap);
+
+        
+
+        // var baselayer1 =  L.tileLayer.provider('Stamen.Watercolor');
+        var baselayer2 =  L.tileLayer.provider('Stadia.AlidadeSmoothDark');
+        var baselayer3 = L.tileLayer.provider('Esri.WorldImagery');
+        var baseMaps = { 
+            // "layer1" : baselayer1, 
+            "Dark" : baselayer2,
+            "Satellite" : baselayer3,
+        };
+
+        L.control.layers(baseMaps, null).addTo(mymap);
+    {% comment %} var layer = new L.GeoJSON.AJAX("{% url 'load_tracks' %}"); {% endcomment %}
+
+    </script>
+   
+    
+
+</html>

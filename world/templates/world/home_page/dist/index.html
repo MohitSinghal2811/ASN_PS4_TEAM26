@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>OceanTrace</title>
+  <link rel="stylesheet" href="{% static 'dist/home_page/dist/style.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="wrapper">
+  <div class="Container">
+        <div class="nav">
+            <div class="logo">
+                OceanTrace
+            </div>
+            <div class="menu">
+                <ul class="navMenu">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'pricing' %}">Pricing</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="{% url 'sign_up' %}">Registration</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="header">
+            <h1>Tracing the ocean</h1>
+            <p></p>
+            <p>One vessel at a time</p>
+            <button type="button" onclick="location.href='tabs';">EXPLORE NOW</button>
+        </div>
+    </div>
+</div>
+<!-- partial -->
+  
+</body>
+</html>

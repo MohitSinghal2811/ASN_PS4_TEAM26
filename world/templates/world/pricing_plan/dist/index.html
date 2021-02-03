@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Responsive pricing table</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto&amp;display=swap'>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css'><link rel="stylesheet" href="{% static 'dist/pricing_plan/dist/style.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="page">
+  <div class="pricing-container">
+    
+    <div class="plan">
+      <div class="plan-icon">
+        <i class="far fa-compass"></i>
+      </div>
+      <div class="title">
+        FREE
+      </div>
+      <ul class="features">
+        <li>Anchorages</li>
+        <li>Vessel Data Analysis</li>
+        <li>Weather Monitoring</li>
+      </ul>
+      <div class="price">
+        $ xx
+      </div>
+    </div>
+    
+    <div class="plan">
+      <div class="plan-icon">
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="title">
+        PREMIUM
+      </div>
+      <ul class="features">
+        <li>Anchorages</li>
+        <li>Vessel Tracker</li>
+        <li>Overfishing Checker</li>
+        <li>Anomaly Detector</li>
+        <li>Vessel Data Analysis</li>
+        <li>Weather Monitoring</li>
+      </ul>
+      <div class="price">
+        $ yy
+      </div>
+    </div>
+    
+  </div>
+</div>
+<!-- partial -->
+  
+</body>
+</html>

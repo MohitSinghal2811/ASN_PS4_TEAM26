@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+{% load leaflet_tags %}
+{% load static %}
+<html lang="en">
+<head>
+{% leaflet_js %}
+{% leaflet_css %}
+    <meta charset="UTF-8">
+    <style type='text/css'>
+      #gis {width:100%; height:100vh; position: relative}
+    </style>
+    <title> Anchors </title>
+</head>
+
+<body>
+{% leaflet_map 'gis' callback="window.our_layers" %}
+</body>
+  <script type = "text/javascript" src="{% static 'dist/leaflet.ajax.js' %}"></script>
+  <script type = "text/javascript" src="{% static 'dist/leaflet-providers.js' %}"></script>
+
+<script type = "text/javascript">
+function createCircleMarker( feature, latlng ){
+  let options = {
+    radius: 4,
+    color: "red",
+    stroke:false,
+    weight: 1,
+    opacity: 1
+  }
+  return L.circleMarker( latlng, options );
+}
+
+function createCircleMarker2( feature, latlng ){
+  let options = {
+    radius: 4,
+    color: "yellow",
+    stroke:false,
+    weight: 1,
+    opacity: 1
+  }
+  return L.circleMarker( latlng, options );
+}
+
+function createCircleMarker3( feature, latlng ){
+  let options = {
+    radius: 4,
+    color: "lime",
+    stroke:false,
+    weight: 1,
+    opacity: 1
+  }
+  return L.circleMarker( latlng, options );
+}
+
+function createCircleMarker4( feature, latlng ){
+  let options = {
+    radius: 4,
+    color: "green",
+    stroke:false,
+    weight: 1,
+    opacity: 1
+  }
+  return L.circleMarker( latlng, options );
+}
+
+
+function createCircleMarker5( feature, latlng ){
+  let options = {
+    radius: 4,
+    color: "aqua",
+    stroke:false,
+    weight: 1,
+    opacity: 1
+  }
+  return L.circleMarker( latlng, options );
+}
+
+
+
+function createCircleMarker6( feature, latlng ){
+  let options = {
+    radius: 4,
+    color: "fuchsia",
+    stroke:false,
+    weight: 1,
+    opacity: 1
+  }
+  return L.circleMarker( latlng, options );
+}
+
+
+
+
+function createCircleMarker7( feature, latlng ){
+  let options = {
+    radius: 4,
+    color: "purple",
+    stroke:false,
+    weight: 1,
+    opacity: 1
+  }
+  return L.circleMarker( latlng, options );
+}
+
+
+
+
+function createCircleMarker8( feature, latlng ){
+  let options = {
+    radius: 4,
+    color: "olive",
+    stroke:false,
+    weight: 1,
+    opacity: 1
+  }
+  return L.circleMarker( latlng, options );
+}
+
+
+
+
+function createCircleMarker9( feature, latlng ){
+  let options = {
+    radius: 4,
+    color: "blue",
+    stroke:false,
+    weight: 1,
+    opacity: 1
+  }
+  return L.circleMarker( latlng, options );
+}
+
+
+
+function createCircleMarker10( feature, latlng ){
+  let options = {
+    radius: 4,
+    color: "maroon",
+    stroke:false,
+    weight: 1,
+    opacity: 1
+  }
+  return L.circleMarker( latlng, options );
+}
+
+
+
+
+    function our_layers(map, options){
+      console.log("function is working");
+      var layer1 = new L.GeoJSON.AJAX("{% url 'load_anchors' "IND" %}",{
+          pointToLayer: createCircleMarker});
+      var layer2 = new L.GeoJSON.AJAX("{% url 'load_anchors' "IDN" %}",{
+          pointToLayer: createCircleMarker2});
+      var layer3 = new L.GeoJSON.AJAX("{% url 'load_anchors' "THA" %}",{
+          pointToLayer: createCircleMarker3});
+      var layer4 = new L.GeoJSON.AJAX("{% url 'load_anchors' "MYS" %}",{
+          pointToLayer: createCircleMarker4});
+      var layer5 = new L.GeoJSON.AJAX("{% url 'load_anchors' "VNM" %}",{
+          pointToLayer: createCircleMarker5});
+      var layer6 = new L.GeoJSON.AJAX("{% url 'load_anchors' "BRN" %}",{
+          pointToLayer: createCircleMarker6});
+      var layer7 = new L.GeoJSON.AJAX("{% url 'load_anchors' "PHL" %}",{
+          pointToLayer: createCircleMarker7});
+      var layer8 = new L.GeoJSON.AJAX("{% url 'load_anchors' "MMR" %}",{
+          pointToLayer: createCircleMarker8});
+      var layer9 = new L.GeoJSON.AJAX("{% url 'load_anchors' "KHM" %}",{
+          pointToLayer: createCircleMarker9});
+      var layer10 = new L.GeoJSON.AJAX("{% url 'load_anchors' "SGP" %}",{
+          pointToLayer: createCircleMarker10});
+
+      var overlayMaps = {
+    "IND" : layer1,
+    "IDN" : layer2,
+    "THA" : layer3,
+    "MYS" : layer4,
+    "VNM" : layer5,
+    "BRN" : layer6,
+    "PHL" : layer7,
+    "MMR" : layer8,
+    "KHM" : layer9,
+    "SGP" : layer10
+};
+
+
+  var baselayer1 =  L.tileLayer.provider('Stamen.Watercolor');
+  var baselayer2 =  L.tileLayer.provider('Stadia.AlidadeSmoothDark');
+  var baselayer3 = L.tileLayer.provider('Esri.WorldImagery');
+    var baseMaps = { 
+      "layer1" : baselayer1, 
+      "layer2" : baselayer2,
+      "layer3" : baselayer3,
+    };
+
+      L.control.layers(baseMaps, overlayMaps).addTo(map);
+    }
+  </script>
+
+
+</html>

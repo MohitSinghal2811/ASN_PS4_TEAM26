@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+{% load leaflet_tags %}
+{% load static %}
+<html lang="en">
+<head>
+{% leaflet_js %}
+{% leaflet_css %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    
+    <meta charset="UTF-8">
+    <style type='text/css'>
+        #gis {width:100%; height:100vh; position: relative; z-index = 1}
+    </style>
+    <title> OceanTrace - Anomalies </title>
+</head>
+
+<body>
+
+<div id="gis"></div>
+
+</body>
+
+    <script type = "text/javascript" src="{% static 'dist/leaflet.ajax.js' %}"></script>
+    <script type = "text/javascript" src="{% static 'dist/leaflet-providers.js' %}"></script>
+
+    <script type = "text/javascript">
+        var xhttp = new XMLHttpRequest();
+        var data;
+        var mymap = L.map('gis');
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            data = this.responseText;
+            var obj = JSON.parse(data)
+            obj = obj.features;
+            console.log(obj);
+            mymap.setView(new L.LatLng(obj[0].properties.lat,obj[0].properties.lon ), 5);
+            var i = 0;
+            temp = [];
+            var last = "";
+            for(;i<obj.length;i++){
+                temp.push([obj[i].properties.lat, obj[i].properties.lon]);
+            }
+            var line = L.polyline(temp, {weight : 3}).addTo(mymap);
+            mymap.fitBounds(line.getBounds());            
+            }
+        };
+        xhttp.open("GET", "{% url 'load_anomalies_day1' %}", true);
+        xhttp.send();
+
+        
+        {% comment %} var xhttp2 = new XMLHttpRequest();
+        var data;
+        xhttp2.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            data = this.responseText;
+            var obj = JSON.parse(data)
+            obj = obj.features;
+            console.log(obj);
+            var i = 0;
+            temp = [];
+            var last = "";
+            for(;i<obj.length;i++){
+                temp.push([obj[i].properties.lat, obj[i].properties.lon]);
+            }
+            var line = L.polyline(temp, {weight : 3}).addTo(mymap);
+            }
+        };
+        xhttp2.open("GET", "{% url 'load_anomalies_day2' %}", true);
+        xhttp2.send();
+
+
+        var xhttp3 = new XMLHttpRequest();
+        var data;
+        xhttp3.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            data = this.responseText;
+            var obj = JSON.parse(data)
+            obj = obj.features;
+            console.log(obj);
+            var i = 0;
+            temp = [];
+            var last = "";
+            for(;i<obj.length;i++){
+                temp.push([obj[i].properties.lat, obj[i].properties.lon]);
+            }
+            var line = L.polyline(temp, {weight : 3}).addTo(mymap);
+            }
+        };
+        xhttp3.open("GET", "{% url 'load_anomalies_day3' %}", true);
+        xhttp3.send();
+
+
+        var xhttp4 = new XMLHttpRequest();
+        var data;
+        xhttp4.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            data = this.responseText;
+            var obj = JSON.parse(data)
+            obj = obj.features;
+            console.log(obj);
+            var i = 0;
+            temp = [];
+            var last = "";
+            for(;i<obj.length;i++){
+                temp.push([obj[i].properties.lat, obj[i].properties.lon]);
+            }
+            var line = L.polyline(temp, {color: 'red'}).addTo(mymap);
+            }
+        };
+        xhttp4.open("GET", "{% url 'load_anomalies_day4' %}", true);
+        xhttp4.send(); {% endcomment %}
+
+
+        var xhttp6 = new XMLHttpRequest();
+        var data;
+        xhttp6.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            data = this.responseText;
+            var obj = JSON.parse(data)
+            console.log("HIIJIOJOIJ")
+            obj = obj.features;
+            console.log(obj);
+            var i = 0;
+            temp = [];
+            var last = "";
+            for(;i<obj.length;i++){
+                temp.push([obj[i].properties.lat, obj[i].properties.lon]);
+            }
+            var line = L.polyline(temp).addTo(mymap);
+            }
+        };
+        xhttp6.open("GET", "{% url 'load_anomalies_day6' %}", true);
+        xhttp6.send();
+
+
+        L.tileLayer.provider('Stadia.AlidadeSmoothDark').addTo(mymap);
+
+    
+        // var baselayer1 =  L.tileLayer.provider('Stamen.Watercolor');
+        var baselayer2 =  L.tileLayer.provider('Stadia.AlidadeSmoothDark');
+        var baselayer3 = L.tileLayer.provider('Esri.WorldImagery');
+        var baseMaps = { 
+            // "layer1" : baselayer1, 
+            "Dark" : baselayer2,
+            "Satellite" : baselayer3,
+        };
+
+        L.control.layers(baseMaps, null).addTo(mymap);
+    {% comment %} var layer = new L.GeoJSON.AJAX("{% url 'load_tracks' %}"); {% endcomment %}
+
+    </script>
+   
+    
+
+</html>
